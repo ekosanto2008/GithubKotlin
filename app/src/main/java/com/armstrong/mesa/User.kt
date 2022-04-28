@@ -6,9 +6,13 @@ import android.os.Parcelable
 data class User(
     val login: String?,
     val avatar_url: String?,
-    val url: String?
+    val url: String?,
+    val bio: String?,
+    val company: String?
     ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString()

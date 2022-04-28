@@ -3,4 +3,6 @@
     <string name="octopus">octopus</string>
     <string name="name">name</string>
     <string name="url">url</string>
+    <string name="bio">bio</string>
+    <string name="company">company</string>
 </resources>

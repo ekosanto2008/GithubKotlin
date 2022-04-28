@@ -1,5 +1,6 @@
 package com.armstrong.mesa
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var imageView: ImageView
     lateinit var mAdapter: UserSearchAdapter
+    val data: String = "DETAIL_USER"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,5 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSelectedUser(user: UserSearch.Result){
         Toast.makeText(this, "You choose " + user.login, Toast.LENGTH_SHORT).show()
+        val moveActivity = Intent(this@MainActivity, DetailActivity::class.java)
+        moveActivity.putExtra(DetailActivity.data, user.login)
+        startActivity(moveActivity)
     }
 }
