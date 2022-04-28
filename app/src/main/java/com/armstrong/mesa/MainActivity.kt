@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var imageView: ImageView
     lateinit var mAdapter: UserSearchAdapter
-    val data: String = "DETAIL_USER"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

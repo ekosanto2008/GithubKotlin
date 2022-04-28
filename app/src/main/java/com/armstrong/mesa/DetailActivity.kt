@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -12,6 +16,11 @@ import retrofit2.Response
 class DetailActivity : AppCompatActivity() {
 
     companion object {
+        @StringRes
+        private val TAB_FILES = intArrayOf(
+            R.string.followers,
+            R.string.following
+        )
         const val data = "DETAIL_USER"
     }
 
@@ -19,6 +28,19 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         getData()
+        showNav()
+    }
+
+    private fun showNav() {
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
+        viewPager.adapter = sectionsPagerAdapter
+        val tabs: TabLayout = findViewById(R.id.tabs)
+        TabLayoutMediator(tabs, viewPager) {tab, position ->
+            tab.text = resources.getString(DetailActivity.TAB_FILES[position])
+        }.attach()
+
+        supportActionBar?.elevation = 0f
     }
 
     private fun getData() {
